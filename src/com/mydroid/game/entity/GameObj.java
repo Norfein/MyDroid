@@ -68,9 +68,6 @@ public abstract class GameObj {
 
     public Rectangle hitZone;
 
-    /* Путь относительно папки gfx. Является ключом */
-    private Texture texture;
-
     /* X и Y центра текстуры */
     public float centX()
     {
@@ -81,12 +78,8 @@ public abstract class GameObj {
         return y+getTexture().getHeight()/2;
     }
 
-    public Texture getTexture(){return getTextureRegion().getTexture();};
+    public Texture getTexture(){return getTextureRegion().getTexture();}
     public abstract TextureRegion getTextureRegion();
-
-    public void setTexture(Texture t){
-        texture = t;
-    }
 
     /* ====== METHODS ====== */
 
@@ -115,17 +108,16 @@ public abstract class GameObj {
     }
 
     /* Выстрел */
-    protected void shot(){};
+    protected void shot(){}
 
     /* Апдейт объекта */
     public void update(){
-        /* Цепляем хитзону к координатам объекта */
-//        hitZone.setX(x-(getTexture().getWidth()/2));
-//        hitZone.setY(y-(getTexture().getHeight()/2));
+        /* Апдейт хит-зоны */
+        hitZone.setX(x);
+        hitZone.setY(y);
     }
 
     /* Очистка */
     public void remove(){
-        setTexture(null);
     }
 }
