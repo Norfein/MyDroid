@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+android:id="@+id/lin_layout"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:orientation="vertical"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+    <TextView
+    android:id="@+id/txtTitle"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Menu" android:textSize="20sp"
+    >
+    </TextView>
+    <EditText
+    android:id="@+id/txtEdit"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text=""
+    android:textSize="18sp"
+    >
+    </EditText>
+    <Button
+    android:id="@+id/btnNextActivity"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Next activity"
+    >
+    </Button>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout
+android:id="@+id/control_layout"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+xmlns:android="http://schemas.android.com/apk/res/android"
+>
+<ImageView
+android:id="@+id/imgControl"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_x="140px"
+android:layout_y="195px"
+>
+</ImageView>
+</AbsoluteLayout>
