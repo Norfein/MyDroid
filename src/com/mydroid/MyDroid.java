@@ -72,12 +72,12 @@ public class MyDroid implements ApplicationListener{
             lastUpd = SystemClock.uptimeMillis();
             screen.update();
         }
-
         screen.render();
     }
 
     /* При паузе */
     public void pause() {
+        dispose();
         //To change body of implemented methods use File | Settings | File Templates
         GdxNotifyLog("pause!");
     }
@@ -96,6 +96,7 @@ public class MyDroid implements ApplicationListener{
     /* При завершении */
     public void dispose() {
         //GameObj.getObjectList().clear();
+        screen.removed();
         GdxNotifyLog("dispose!");
     }
 

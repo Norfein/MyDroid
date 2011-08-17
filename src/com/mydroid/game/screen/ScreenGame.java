@@ -10,25 +10,21 @@ import com.mydroid.game.Audio;
 import com.mydroid.game.entity.GameObj;
 import com.mydroid.game.entity.Player;
 import com.mydroid.game.entity.RedLaser;
+import com.mydroid.game.entity.Star;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 
 /**
- * Created by IntelliJ IDEA.
- * User: e_krais
- * Date: 15.08.11
- * Time: 17:41
- * To change this template use File | Settings | File Templates.
+ *
  */
 public class ScreenGame extends Screen{
-
-    Player player;
     public ScreenGame()
     {
         super();
-        player = new Player(MyDroid.getWinWidth()/2, MyDroid.getWinHeight()-64);
+        createStars(10);
+        new Player(MyDroid.getWinWidth()/2, MyDroid.getWinHeight()-35);
         Audio.msc_cell.setLooping(true);
         Audio.msc_cell.play();
     }
@@ -37,6 +33,12 @@ public class ScreenGame extends Screen{
         super.removed();    //To change body of overridden methods use File | Settings | File Templates.
         Audio.msc_cell.stop();
         GameObj.clearObjectList();
+    }
+
+    private void createStars(int count)
+    {
+        for (int i=0; i<count; i++)
+            new Star();
     }
 
     @Override

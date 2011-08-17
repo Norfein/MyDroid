@@ -12,11 +12,7 @@ import com.mydroid.game.entity.GameObj;
 import java.util.logging.XMLFormatter;
 
 /**
- * Created by IntelliJ IDEA.
- * User: e_krais
- * Date: 15.08.11
- * Time: 17:41
- * To change this template use File | Settings | File Templates.
+ *
  */
 public abstract class Screen {
     public SpriteBatch spriteBatch;
@@ -49,6 +45,8 @@ public abstract class Screen {
 
     public void draw(GameObj go, float tx, float ty)
     {
+        /* !!! Эффект дублей объектов происходит из-за  */
+        //spriteBatch.draw(go.getTextureRegion(), tx, ty, go.centX(), go.centY(), go.getTexture().getWidth(), go.getTexture().getHeight(), go.size, go.size, go.rotation);
         spriteBatch.draw(go.getTextureRegion(), tx, ty);
         //spriteBatch.draw(texture, tx, ty, texture.getWidth(), texture.getHeight(), (int)tx, (int)ty, texture.getWidth(), texture.getHeight(), false, true);
     }

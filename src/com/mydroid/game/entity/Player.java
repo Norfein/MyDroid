@@ -15,7 +15,8 @@ import com.mydroid.game.Audio;
  */
 public class Player extends GameObj {
 
-    private float lastShotTime=0;
+    private float lastShotTime = 0;
+
     public Player(float ix, float iy) {
 
         super(ix, iy);    //To change body of overridden methods use File | Settings | File Templates.
@@ -38,13 +39,10 @@ public class Player extends GameObj {
 //        else
 
         /* Если не в состоянии равновесия */
-        if (MyDroid.getYAccel()<-0.01 || MyDroid.getYAccel()>0.01)
-        {
+        if (MyDroid.getYAccel() < -0.01 || MyDroid.getYAccel() > 0.01) {
             a.x = MyDroid.getYAccel();
             //Gdx.app.log("Y accel: ", String.valueOf(MyDroid.getYAccel()));
-        }
-        else
-        {
+        } else {
             a.x = 0.0f;
         }
 
@@ -62,17 +60,17 @@ public class Player extends GameObj {
         v.add(a);
 
         /* Сила трения */
-        v.x*=0.9;
+        v.x *= 0.9;
         //v.y*=0.8;
 
         /* Ограничение скорости */
-        if (v.x>5)
-            v.x = 5;
-        else if (v.x<-5)
-            v.x = -5;
-        if (v.y>3)
+        if (v.x > 6)
+            v.x = 6;
+        else if (v.x < -6)
+            v.x = -6;
+        if (v.y > 3)
             v.y = 3;
-        else if (v.y<-3)
+        else if (v.y < -3)
             v.y = -3;
 
         /* Движение */
@@ -80,22 +78,22 @@ public class Player extends GameObj {
         //y += v.y;
 
         /* Эффект отталкивания от границ экрана */
-        if (x<0 || x>(MyDroid.getWinWidth()-getTexture().getWidth()))
-            v.x *=-1.5;
+
+        if (x < 0 || x > (MyDroid.getWinWidth() - getTexture().getWidth()))
+            v.x *= -2.0;
+        if (x<0) x=0;
+        if (x > (MyDroid.getWinWidth() - getTexture().getWidth())) x = (MyDroid.getWinWidth() - getTexture().getWidth());
 
         /* Управление через акслерометр */
         /* Обработка ввода */
-        if (Gdx.app.getInput().isTouched())
-        {
-            if (SystemClock.uptimeMillis() - lastShotTime > 1000)
-            {
+        if (Gdx.app.getInput().isTouched()) {
+            if (SystemClock.uptimeMillis() - lastShotTime > 250) {
                 lastShotTime = SystemClock.uptimeMillis();
                 shot();
             }
         }
 
-        if (hp<=0)
-        {
+        if (hp <= 0) {
             toRemove = true;
             return;
         }
@@ -104,15 +102,12 @@ public class Player extends GameObj {
 
     @Override
     protected void shot() {
-        if (Gdx.app.getInput().getX()>MyDroid.getWinWidth()/2)
-        {
+        if (Gdx.app.getInput().getX() > MyDroid.getWinWidth() / 2) {
             Audio.shot_gun.play();
-            new RedLaser(this, new Vector2(0,-5));
-        }
-        else
-        {
+            new RedLaser(this, new Vector2(0, -5));
+        } else {
             Audio.shot_laser.play();
-            new GreenLaser(this, new Vector2(0,-5));
+            new GreenLaser(this, new Vector2(0, -5));
         }
     }
 }
